@@ -1,13 +1,6 @@
 import re
-import aoc_lube
 
-# HANDS = aoc_lube.fetch(year=2023.1, day=7).splitlines()
-# HANDS = """32T3K 765
-# T55J5 684
-# KK677 28
-# KTJJT 220
-# QQQJA 483""".splitlines()
-HANDS = aoc_lube.fetch(year=2023, day=7).splitlines()
+HANDS = open('main.txt').read().splitlines()
 
 possible_cards = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2']
 five_of_a_kinds, four_of_a_kinds, full_houses, three_of_a_kinds, two_pairs, one_pairs, high_cards = ([] for j in range(7))
@@ -104,12 +97,6 @@ for hand in hand_data.keys():
     elif one_match == 5:
         high_cards.append(hand)
 
-print(len(five_of_a_kinds))
-print(len(full_houses))
-print(len(four_of_a_kinds))
-print(len(three_of_a_kinds))
-print(len(two_pairs))
-print(len(one_pairs))
 
 
 def sort_list(list_to_sort):
@@ -149,84 +136,3 @@ for index, hand in enumerate(final_list):
     sum_to_add = rank * int(value)
     total_sum += sum_to_add
 print(total_sum)
-
-
-
-
-
-
-
-
-
-#
-#
-# final_list = []
-#
-# for lists in full_list:
-#     first_number_list = []
-#     num_list = []
-#     first_number_dict = {}
-#     number_to_check = 0
-#     card_to_numbers_dict = convert_list(lists)
-#     winning_hand = None
-#     if lists and len(lists) > 1:
-#         while True:
-#             print(card_to_numbers_dict)
-#             if len(lists) == 1:
-#                 final_list.append(lists[0])
-#                 break
-#             hand_wining = False
-#             print('while loop')
-#
-#             # haal het eerste nummer uit de lijst met kaarten vertaald naar nummers
-#             for item in card_to_numbers_dict.values():
-#                 print(num_list)
-#                 print(item)
-#                 num_list.append(item[0])
-#
-#             for hand, number_list in card_to_numbers_dict.items():
-#                 if min(num_list) == number_list[0]:
-#                     if hand_wining is False:
-#                         winning_hand = hand
-#                         hand_wining = True
-#
-#                     # als er al een hand aan het winnen is dan zijn er dus gelijke kaarten
-#                     else:
-#                         winning_hand = None
-#                         hand_wining = False
-#
-#             if winning_hand is not None:
-#                 card_to_numbers_dict.pop(winning_hand)
-#                 final_list.append(winning_hand)
-#                 lists.remove(winning_hand)
-#                 num_list.remove(min(num_list))
-#             else:
-#                 for item in card_to_numbers_dict.values():
-#                     item.pop(0)
-#                 print(card_to_numbers_dict)
-#
-#     elif len(lists) == 1:
-#         final_list.append(lists[0])
-#
-#
-# final_list.reverse()
-# print(final_list)
-# total_sum = 0
-# for index, hand in enumerate(final_list):
-#     rank = index + 1
-#     value = hand_data[hand]
-#     sum_to_add = rank * int(value)
-#     total_sum += sum_to_add
-# print(total_sum)
-
-
-# # // verander lijst in een lijst nummers om te kijken welk nummer hoger is
-# def convert_list(list_to_convert):
-#     card_num_list_dict = {}
-#     for hand in list_to_convert:  # noqa
-#         num_list = []  # noqa
-#         for card in hand:  # noqa
-#             card_number = card_to_number[card]
-#             num_list.append(card_number)
-#         card_num_list_dict[hand] = num_list
-#     return card_num_list_dict

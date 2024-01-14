@@ -1,16 +1,5 @@
-import aoc_lube
 from math import lcm
-# INPUT = """LR
-#
-# 11A = (11B, XXX)
-# 11B = (XXX, 11Z)
-# 11Z = (11B, XXX)
-# 22A = (22B, XXX)
-# 22B = (22C, 22C)
-# 22C = (22Z, 22Z)
-# 22Z = (22B, 22B)
-# XXX = (XXX, XXX)"""
-INPUT = aoc_lube.fetch(year=2023, day=8)
+INPUT = open('main.txt').read()
 
 first_run = True
 
@@ -43,9 +32,6 @@ for location in INPUT.splitlines()[2:]:
         locations_with_a.append(location_id)
 
 
-print(locations)
-print(locations_with_a)
-
 for item in locations_with_a:
     current_location = item
     steps_taken = 0
@@ -64,17 +50,12 @@ for item in locations_with_a:
             current_location = locations[current_location][6:9]
 
         if current_location[2] == 'Z':
-            print('________________z________________')
             steps_taken += 1
-            print(steps_taken)
             steps_per_location.append(steps_taken)
             break
         else:
             steps_taken += 1
             direction_index += 1
-
-
-print(steps_per_location)
 
 final_ans = lcm(*steps_per_location)
 

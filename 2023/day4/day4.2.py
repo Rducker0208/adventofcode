@@ -1,7 +1,4 @@
-import aoc_lube
-
-LINES = aoc_lube.fetch(year=2023, day=4).splitlines()
-
+LINES = open('main.txt').read().splitlines()
 card_dict = {}
 
 total_sum = 0

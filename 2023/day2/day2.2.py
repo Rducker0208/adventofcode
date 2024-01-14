@@ -1,12 +1,10 @@
-import aoc_lube
-games = aoc_lube.fetch(year=2023, day=2).splitlines()
+games = open('main.txt').read().splitlines()
 power_sum = 0
 
 for game in games:
     highest_red = 0
     highest_green = 0
     highest_blue = 0
-    print(game)
     hands = game.split(';')
     for hand in hands:
         game_id = hand.split(':')
@@ -28,10 +26,6 @@ for game in games:
                 green_cubes = item.split('green')[0]
                 if int(green_cubes) > highest_green:
                     highest_green = int(green_cubes)
-    print(highest_red)
-    print(highest_green)
-    print(highest_blue)
     sum_to_add = highest_red * highest_green * highest_blue
-    print(sum_to_add)
     power_sum = power_sum + sum_to_add
 print(power_sum)

@@ -1,7 +1,6 @@
 import re
-import aoc_lube
 
-HANDS = aoc_lube.fetch(year=2023, day=7).splitlines()
+HANDS = open('main.txt').read().splitlines()
 
 
 possible_cards = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2']
@@ -109,10 +108,8 @@ def find_best_option(hand_to_check):
         max_card_value = 0
         card_value_found = 0
         for possible_card in possible_cards:
-            print('in loop')
             if possible_card in hand:
                 card_value = card_to_number[possible_card]
-                print(f'card value: {card_value}')
                 if card_value > max_card_value:
                     max_card_value = card_value
 
@@ -135,12 +132,10 @@ for hand in hand_data.keys():
     if hand_without_j == 'JJJJJ':
         hand_without_j = 'AAAAA'
     else:
-        print(f'without j removal: {hand_without_j}')
         for card in hand_without_j:
             if card == 'J':
                 new_letter = find_best_option(hand_without_j)
                 hand_without_j = hand_without_j.replace(card, new_letter)
-        print(f'after j removal: {hand_without_j}')
 
     # // ga elke kaart na om te kijken of deze in de hand zit
     for card in possible_cards:
@@ -188,13 +183,6 @@ for hand in hand_data.keys():
     elif one_match == 5:
         high_cards.append(hand)
 
-print(len(five_of_a_kinds))
-print(len(full_houses))
-print(len(four_of_a_kinds))
-print(len(three_of_a_kinds))
-print(len(two_pairs))
-print(len(one_pairs))
-
 
 def sort_list(list_to_sort):
     new_list = []
@@ -219,7 +207,6 @@ final_list = []
 
 # // ga elke lijst met wincondities door van waardevol naar niet waardevol
 for list_with_set in win_condition_list:
-    print(list_with_set)
     if list_with_set:
         sorted_list = sort_list(list_with_set)
         for item in sorted_list:
@@ -228,7 +215,6 @@ for list_with_set in win_condition_list:
 final_list.reverse()
 
 total_sum = 0
-print(final_list)
 for index, hand in enumerate(final_list):
     rank = index + 1
     value = hand_data[hand]

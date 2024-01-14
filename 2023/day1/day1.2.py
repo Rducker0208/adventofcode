@@ -1,7 +1,6 @@
-import aoc_lube
 import re
-LINES = aoc_lube.fetch(year=2023, day=1).splitlines()
-# LINES = ['1abc2', 'pqr3stu8vwx', 'a1b2c3d4e5f', 'treb7uchet']
+
+LINES = open('main.txt').read().splitlines()
 lines = 0
 index = 0
 total_number = 0
@@ -32,12 +31,9 @@ reverse_spelled_nummers = {
     9: 'nine',
 }
 
-print(LINES)
-
 for string in LINES:
     index_list = []
     index_library = {}
-    print(string)
     for number in spelled_nummers.keys():
         if number in string:
             indexes = [m.start() for m in re.finditer(number, string)]
@@ -46,17 +42,14 @@ for string in LINES:
 
     for number in reverse_spelled_nummers.keys():
         if str(number) in string:
-            print(str(number))
             indexes = [m.start() for m in re.finditer(str(number), string)]
             for item in indexes:
                 index_library[item] = number
 
-    print(index_library)
     index_list = []
     for index in index_library.keys():
         index_list.append(index)
     index_list.sort()
-    print(index_list)
     first_number = index_library.get(index_list[0])
     last_number = index_library.get(index_list[-1])
     number_to_add = int(f'{first_number}{last_number}')

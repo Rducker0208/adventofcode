@@ -1,5 +1,4 @@
-import aoc_lube
-RACES = aoc_lube.fetch(year=2023, day=6).splitlines()
+RACES = open('main.txt').read().splitlines()
 TIMES_FULL = RACES[0].split(':')[1]
 DISTANCES_FULL = RACES[1].split(':')[1]
 
@@ -21,12 +20,8 @@ for item in DISTANCES_FULL.split(' '):
 DISTANCES.append(int(distance))
 
 
-print(RACES)
-print(TIMES)
-print(DISTANCES)
-
-
 def get_min_or_max(time_list, mode, race_distance, race_time):
+    global number_possible
     for time_hold in range(0, race_time + 1):
         time_left = race_time - time_hold
         meter_per_ms = time_hold
@@ -42,9 +37,7 @@ def get_min_or_max(time_list, mode, race_distance, race_time):
 
 for race_number, race in enumerate(TIMES):
     minimum_number = get_min_or_max(TIMES, 'min_num', DISTANCES[race_number], race)
-    print(f'Found min: {minimum_number}')
     max_number = get_min_or_max(TIMES, 'max_num', DISTANCES[race_number], race)
-    print(f'Found max: {max_number}')
     possible_ways = max_number - minimum_number + 1
     if possible_ways_total == 0:
         possible_ways_total += possible_ways

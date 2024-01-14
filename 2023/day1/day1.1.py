@@ -1,10 +1,7 @@
-import aoc_lube
-
 LINES = open('main.txt').read().splitlines()
 lines = 0
 total_number = 0
 nummers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-print(LINES)
 
 for item in LINES:
     string_counter = 0
@@ -22,6 +19,5 @@ for item in LINES:
             else:
                 last_number = letter
                 numbers = f'{first_number}{last_number}'
-    print(numbers)
     total_number = total_number + int(numbers)
 print(total_number)

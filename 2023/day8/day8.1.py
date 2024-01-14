@@ -1,6 +1,4 @@
-import aoc_lube
-
-INPUT = aoc_lube.fetch(year=2023, day=8)
+INPUT = open('main.txt').read()
 
 locations = {}
 first_location = 'AAA'
@@ -35,14 +33,12 @@ def goto_new_location(current_location, direction_index, total_steps):
         # // verzamel nieuew locatie
         if direction_to_go == 'L':
             current_location = locations[current_location][1:4]
-            print(current_location)
 
         # // direction is rechts
         else:
             current_location = locations[current_location][6:9]
 
         if current_location == 'ZZZ':
-            print('arrived at z')
             total_steps += 1
             print(total_steps)
             break
