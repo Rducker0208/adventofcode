@@ -1,6 +1,6 @@
 import aoc_lube
 
-LINES = aoc_lube.fetch(year=2023, day=1).splitlines()
+LINES = open('main.txt').read().splitlines()
 lines = 0
 total_number = 0
 nummers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']

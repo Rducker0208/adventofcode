@@ -1,7 +1,7 @@
 import re
 import aoc_lube
 
-# HANDS = aoc_lube.fetch(year=2023, day=7).splitlines()
+# HANDS = aoc_lube.fetch(year=2023.1, day=7).splitlines()
 # HANDS = """32T3K 765
 # T55J5 684
 # KK677 28
