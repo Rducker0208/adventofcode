@@ -1,18 +1,4 @@
-import pprint
-import aoc_lube
-#
-# INPUT = """O....#....
-# O.OO#....#
-# .....##...
-# OO.#O....O
-# .O.....O#.
-# O.#..O.#.#
-# ..O..#O..O
-# .......O..
-# #....###..
-# #OO..#...."""
-
-INPUT = aoc_lube.fetch(year=2023, day=14)
+INPUT = open('main.txt').read()
 
 round_stone_locations = []
 cube_stone_locations = []
@@ -38,7 +24,6 @@ for y, row in rows.items():
 
 
 def find_new_location(original_x, original_y):
-    x_to_check = original_x
     y_to_check = original_y + 1
     found_new_loc = False
 
@@ -68,7 +53,6 @@ for y, row in rows.items():
             find_new_location(x, y)
 
 total = 0
-print(round_stone_locations)
 for location in round_stone_locations:
     total += location[1]
 

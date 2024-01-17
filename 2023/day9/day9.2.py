@@ -1,6 +1,4 @@
-import aoc_lube
-
-values = aoc_lube.fetch(year=2023, day=9).splitlines()
+values = open('main.txt').read().splitlines()
 
 total = 0
 

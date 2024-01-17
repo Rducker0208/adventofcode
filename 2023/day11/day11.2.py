@@ -1,7 +1,4 @@
-import pprint
-import aoc_lube
-
-ROWS = aoc_lube.fetch(year=2023, day=11).splitlines()
+ROWS = open('main.txt').read().splitlines()
 extra_x = 0
 extra_y = 0
 
@@ -15,8 +12,6 @@ x_axis = 0
 total_sum = 0
 
 row = None
-
-print(len(ROWS))
 
 for x_axis_to_check in range(len(ROWS)):
     character_list = []
@@ -33,8 +28,6 @@ def find_extra_y(original_y):
         if all(symbol == '.' for symbol in ROWS[y]):
             y_to_add += 999999
         y += 1
-    # print(original_y)
-    # print(y_to_add)
     return y_to_add
 
 
@@ -57,9 +50,6 @@ for map_number, map_row in enumerate(ROWS):
             galaxy_cords[galaxy_id] = (x_axis + find_extra_x(x_axis), map_number + find_extra_y(map_number))
             galaxy_id += 999999
         x_axis += 1
-
-
-print(galaxy_cords)
 
 
 for key in galaxy_cords.keys():

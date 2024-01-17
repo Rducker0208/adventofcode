@@ -1,20 +1,4 @@
-import pprint
-from typing import List, Any
-
-import aoc_lube
-
-# INPUT = r""".|...\....
-# |.-.\.....
-# .....|-...
-# ........|.
-# ..........
-# .........\
-# ..../.\\..
-# .-.-/..|..
-# .|....-|.\
-# ..//.|...."""
-
-INPUT = aoc_lube.fetch(year=2023, day=16)
+INPUT = open('main.txt').read()
 
 row = []
 paths_taken = []
@@ -33,9 +17,6 @@ visited_Locations = [(0, 0)]
 
 for row_number, row in enumerate(INPUT.splitlines()):
     horizontal_rows[row_number] = list(row)
-
-# print(horizontal_rows)
-
 
 for x_cord in range(len(row)):
     x_characters = []
@@ -58,8 +39,6 @@ for i in range(len(horizontal_rows)):
 
 for start_pos in start_cords:
     start_cords.remove(start_pos)
-    print(start_cords)
-    print(start_pos)
     paths_left = [start_pos]
     paths_taken = []
     visited_Locations = []
@@ -68,8 +47,6 @@ for start_pos in start_cords:
         path_walked = []
         if path in paths_taken:
             continue
-
-        # print(f'now following: {path}')
 
         paths_taken.append(path)
 
@@ -105,7 +82,6 @@ for start_pos in start_cords:
                     break
 
             elif direction == 'east':
-                # print(current_character)
                 if current_character in ['.', '-']:
                     pass
                 elif current_character == '\\':
@@ -159,5 +135,4 @@ for start_pos in start_cords:
     # print(len(visited_Locations))
     final_list.append(len(visited_Locations))
 
-print(final_list)
 print(max(final_list))

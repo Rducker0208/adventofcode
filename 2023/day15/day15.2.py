@@ -1,7 +1,4 @@
-import aoc_lube
-
-
-INPUT = aoc_lube.fetch(year=2023, day=15)
+INPUT = open('main.txt').read()
 
 letter_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 actions = []
@@ -19,7 +16,6 @@ for item in INPUT.split(','):
     seperator = None
     focal_strength = None
     for character_index, character in enumerate(item):
-        print(character)
         if character not in letter_list:
             letters = item[:character_index]
             seperator = character
@@ -29,8 +25,6 @@ for item in INPUT.split(','):
         focal_strength = item[-1]
 
     actions.append((letters, seperator, focal_strength))
-
-print(actions)
 
 
 def hash_algorithm(string):
@@ -71,7 +65,6 @@ for box_number, box_content in boxes.items():
         for item_index, item in enumerate(box_content):
             sum_to_add = (box_number + 1) * (item_index + 1) * int(item[1])
             total_sum += sum_to_add
-            print(f'{box_number, item_index + 1}: {sum_to_add}')
 
 print(total_sum)
 

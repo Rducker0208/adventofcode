@@ -1,19 +1,4 @@
-import pprint
-import aoc_lube
-
-# ROWS_og = """...#......
-# .......#..
-# #.........
-# ..........
-# ......#...
-# .#........
-# .........#
-# ..........
-# .......#..
-# #...#.....""".splitlines()
-
-ROWS_og = aoc_lube.fetch(year=2023, day=11).splitlines()
-
+ROWS_og = open('main.txt').read().splitlines()
 
 galaxy_cords = {}
 path_distances = {}

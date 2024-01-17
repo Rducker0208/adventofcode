@@ -1,21 +1,4 @@
-import pprint
-from typing import List, Any
-
-import aoc_lube
-
-# INPUT = r""".|...\....
-# |.-.\.....
-# .....|-...
-# ........|.
-# ..........
-# .........\
-# ..../.\\..
-# .-.-/..|..
-# .|....-|.\
-# ..//.|...."""
-
-INPUT = aoc_lube.fetch(year=2023, day=16)
-
+INPUT = open('main.txt').read()
 
 horizontal_rows = {}  # // y-cords
 vertical_rows = {}  # // x-cords
@@ -30,9 +13,6 @@ position = None
 for row_number, row in enumerate(INPUT.splitlines()):
     horizontal_rows[row_number] = list(row)
 
-print(horizontal_rows)
-
-
 for x_cord in range(len(row)):
     x_characters = []
     for row in horizontal_rows.values():
@@ -46,8 +26,6 @@ for path in paths_left:
     if path in paths_taken:
         continue
 
-    print(f'now following: {path}')
-
     paths_taken.append(path)
 
     x_cord = path[0]
@@ -58,7 +36,6 @@ for path in paths_left:
     path_walked.append((position, direction))
 
     while True:
-        print(position)
         if x_cord < 0 or y_cord < 0:
             break
         position = (x_cord, y_cord)
@@ -68,9 +45,6 @@ for path in paths_left:
             break
         except IndexError:
             break
-
-        print(current_character)
-        print(direction)
 
         # vind nieuwe directie
         if direction == 'north':
@@ -137,9 +111,4 @@ for path in paths_left:
         elif direction == 'west':
             x_cord -= 1
 
-    print(path_walked)
-    # quit()/
-
-
-print(visited_Locations)
 print(len(visited_Locations))

@@ -1,7 +1,4 @@
-import aoc_lube
-
-
-INPUT = aoc_lube.fetch(year=2023, day=13)
+INPUT = open('main.txt').read()
 
 RAW_INPUT_lIST = INPUT.split('\n\n')
 
@@ -23,7 +20,6 @@ for item in RAW_INPUT_lIST:
 
 # ga elk patroon na
 for item in patern_list:
-    print('____________________________')
     match = None
     vertical_rows = {}
     horizontal_rows = {}
@@ -47,19 +43,13 @@ for item in patern_list:
     next_line_number = 2
 
     while True:
-        print('outer loop')
-        print(last_line_number)
-        print(len(horizontal_rows))
-        print(horizontal_rows)
-        if last_line_number  == len(horizontal_rows) or match is not None:
-            print('broken')
+        if last_line_number == len(horizontal_rows) or match is not None:
             break
         differences = 0
         last_line = horizontal_rows[last_line_number]
         next_line = horizontal_rows[next_line_number]
 
         for last_line_character, next_line_character in zip(last_line, next_line):
-            print(last_line_character, next_line_character)
             if last_line_character != next_line_character:
                 differences += 1
 
@@ -69,7 +59,6 @@ for item in patern_list:
             left_cords = last_line_number
             right_cords = next_line_number
             while True:
-                print('inner loop')
                 try:
 
                     left_cords -= 1
@@ -77,26 +66,20 @@ for item in patern_list:
                     last_line = horizontal_rows[left_cords]
                     next_line = horizontal_rows[right_cords]
                     for last_line_character, next_line_character in zip(last_line, next_line):
-                        print(last_line_character, next_line_character)
                         if last_line_character != next_line_character:
                             differences += 1
 
                 except KeyError:
                     if differences == 1:
-                        print(f'total differences: {differences}')
                         match = ('horizontal', current_cords)
                         matches_list.append(match)
                         break
                     else:
-                        print('break')
                         break
 
         last_line_number += 1
         next_line_number += 1
-        print('added')
-        print(last_line_number)
 
-    print(match)
     if match is None:
         current_row_number = 1
         next_row_number = 2
@@ -142,7 +125,6 @@ for item in patern_list:
             current_row_number += 1
             next_row_number += 1
 
-print(matches_list)
 
 for dimension, sides in matches_list:
     lower_side = sides[0]

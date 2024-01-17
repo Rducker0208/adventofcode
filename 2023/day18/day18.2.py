@@ -1,7 +1,4 @@
-from pprint import pprint
-import aoc_lube
-
-INPUT = aoc_lube.fetch(year=2023, day=18)
+rules = open('main.txt').read().splitlines()
 
 grid_dict = {}
 directions = {'0': 'R', '1': 'D', '2': 'L', '3': 'U'}
@@ -9,9 +6,6 @@ boundary_locations = 0
 seen_locations = [(0, 0)]
 valid_lava_locations = []
 position = (0, 0)
-
-rules = INPUT.splitlines()
-
 
 def shoelace():
     i = 1

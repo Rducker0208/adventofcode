@@ -1,40 +1,4 @@
-import aoc_lube
-
-# INPUT = """#.##..##.
-# ..#.##.#.
-# ##......#
-# ##......#
-# ..#.##.#.
-# ..##..##.
-# #.#.##.#."""
-
-# INPUT = """#...##..#
-# #....#..#
-# ..##..###
-# #####.##.
-# #####.##.
-# ..##..###
-# #....#..#
-# """
-
-# INPUT = """#.##..##.
-# ..#.##.#.
-# ##......#
-# ##......#
-# ..#.##.#.
-# ..##..##.pr
-# #.#.##.#.
-#
-# #...##..#
-# #....#..#
-# ..##..###
-# #####.##.
-# #####.##.
-# ..##..###
-# #....#..#
-# """
-
-INPUT = aoc_lube.fetch(year=2023, day=13)
+INPUT = open('main.txt').read()
 RAW_INPUT_lIST = INPUT.split('\n\n')
 
 patern_list = []
@@ -134,7 +98,6 @@ for item in patern_list:
                 match = None
                 break
 
-print(matches_list)
 
 for dimension, lower_side, higher_side in matches_list:
     if dimension == 'horizontal':
